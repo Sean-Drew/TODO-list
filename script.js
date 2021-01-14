@@ -30,3 +30,22 @@ function removeTask() {
     show()
     return false
 }
+
+function show() {
+    let todos = getTodos()
+    let html = '<ul>'
+
+    for (let i = 0; i < todos.length; i++) {
+        html += '<li>' + todos[i] + '<button class="remove" id="' + i + '">Delete</button> </li>'
+    }
+    html += '</ul>'
+    document.getElementById('todos').innerHTML = html
+
+    let buttons = document.getElementsByClassName('remove')
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', removeTask)
+    }
+}
+
+document.getElementById('add').addEventListener('click', addTask)
+show()
